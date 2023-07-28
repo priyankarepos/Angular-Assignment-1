@@ -1,0 +1,20 @@
+.list-wrapper ul {
+    list-style: none;
+    background: #dfdfdf;
+    color: #fff;
+    padding: 0px 0 0;
+}
+
+.list-wrapper ul li {
+    margin: 0px 0;
+    background: #c5c3c3;
+    color: #000;
+    padding: 10px;
+    font-size: 18px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.list-wrapper {
+    width: 300px;
+}

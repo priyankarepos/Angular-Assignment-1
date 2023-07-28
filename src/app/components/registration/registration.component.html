@@ -1,0 +1,22 @@
+
+<div class="form-wrapper">
+    <h2>Registration</h2>
+    <form (submit)="onSubmit()">
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+        </div>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" [(ngModel)]="user.name" required>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+</div>

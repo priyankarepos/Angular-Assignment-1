@@ -1,0 +1,16 @@
+
+
+<div class="history-wrapper" *ngIf="selectedUserId !== null">
+    <h3>Message History for User {{ selectedUserId }}</h3>
+    <ul>
+      <li *ngFor="let message of messageHistory">
+        {{ message.content }}
+      </li>
+    </ul>
+  </div>  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,262 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "json-server",
+      "email": "typicode",
+      "password": "12345"
+    },
+    {
+      "email": "priyankasuryavanshi@promactinfo.com",
+      "name": "priyanka",
+      "password": "12345",
+      "id": 2
+    },
+    {
+      "email": "priyankasuryavanshi@promactinfo.com",
+      "name": "priyanka",
+      "password": "12345",
+      "id": 3
+    },
+    {
+      "email": "sunny@gmail.com",
+      "name": "sunny",
+      "password": "12345",
+      "id": 4
+    },
+    {
+      "email": "pihu@gmail.com",
+      "name": "pihu",
+      "password": "12345",
+      "id": 5
+    },
+    {
+      "email": "",
+      "password": "",
+      "id": 6
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 7
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 8
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 9
+    },
+    {
+      "email": "pihu@gmail.com",
+      "password": "12345",
+      "id": 10
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 11
+    },
+    {
+      "email": "",
+      "password": "",
+      "id": 12
+    },
+    {
+      "email": "",
+      "password": "",
+      "id": 13
+    },
+    {
+      "email": "",
+      "name": "",
+      "password": "",
+      "id": 14
+    },
+    {
+      "email": "",
+      "password": "",
+      "id": 15
+    },
+    {
+      "email": "",
+      "password": "",
+      "id": 16
+    },
+    {
+      "email": "pihu@gmail.com",
+      "password": "12345",
+      "id": 17
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 18
+    },
+    {
+      "name": "asha",
+      "email": "asha@gmail.com",
+      "password": "12345",
+      "id": 19
+    },
+    {
+      "email": "asha@gmail.com",
+      "password": "Asha@123",
+      "id": 20
+    },
+    {
+      "name": "priyanka",
+      "email": "priyankasuryavanshi@promactinfo.com",
+      "password": "11111",
+      "id": 21
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "11111",
+      "id": 22
+    },
+    {
+      "email": "",
+      "password": "",
+      "id": 23
+    },
+    {
+      "email": "",
+      "password": "",
+      "id": 24
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 25
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 26
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 27
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 28
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 29
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 30
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 31
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 32
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 33
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 34
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 35
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 36
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 37
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 38
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "111",
+      "id": 39
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 40
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 41
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "12345",
+      "id": 42
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "11111",
+      "id": 43
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "11111",
+      "id": 44
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "1111",
+      "id": 45
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "111",
+      "id": 46
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "111",
+      "id": 47
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "111",
+      "id": 48
+    },
+    {
+      "email": "priyanka@gmail.com",
+      "password": "1111",
+      "id": 49
+    },
+    {
+      "email": "bhushan@gmail.com",
+      "password": "12345",
+      "id": 50
+    }
+  ]
+}
