@@ -8,38 +8,15 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AppService {
- apiUrl = 'http://localhost:3000/users';
+  apiUrl = 'http://localhost:3000/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   registerUser(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, user)
-      .pipe(
-        catchError((error: any) => throwError(error))
-      );
+    return this.http.post(`${this.apiUrl}/register`, user)
   }
 
   loginUser(user: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, user)
-      .pipe(
-        catchError((error: any) => throwError(error))
-      );
+    return this.http.post<any>(`${this.apiUrl}/login`, user)
   }
-
-  // saveToken(token: string): void {
-  //   localStorage.setItem('jwtToken', token);
-  // }
-
-  // getToken(): string | null {
-  //   return localStorage.getItem('jwtToken');
-  // }
-
-  // removeToken(): void {
-  //   localStorage.removeItem('jwtToken');
-  // }
-
-  // getAuthorizationHeader(): HttpHeaders {
-  //   const token = this.getToken();
-  //   return new HttpHeaders().set('Authorization', `Bearer ${token}`);
-  // }
 }

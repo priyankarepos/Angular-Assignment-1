@@ -29,10 +29,12 @@ export class LoginComponent {
     this.loginService.loginUser(this.user)
       .subscribe(
         (response) => {
-          console.log('Login successful:', response);
-          // this.loginService.saveToken(response.token);
+          let user = response
+          console.log(response);
+          
+          localStorage.setItem('token', user.token);
+          localStorage.setItem('userId', user.profile.id);
           this.router.navigate(['/chat']);
-          // this.router.navigate([{ outlets: { userList: ['chat'], conversationHistory: null } }]);
         },
         (error) => {
           console.error('Login failed:', error);

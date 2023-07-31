@@ -1,12 +1,15 @@
-
-
 <div class="history-wrapper" *ngIf="selectedUserId !== null">
     <h3>Message History for User {{ selectedUserId }}</h3>
     <ul>
       <li *ngFor="let message of messageHistory">
-        {{ message.content }}
+        {{ messageHistory }}
       </li>
     </ul>
+    <div class="send-msg-wrapper">
+      <input type="text" [(ngModel)]="messageContent" placeholder="Enter msg">
+      <!-- <textarea [(ngModel)]="messageContent" placeholder="Your message"></textarea> -->
+      <button (click)="sendMessage()">Send</button>
+  </div> 
   </div>  
   
   

@@ -34,7 +34,7 @@ export class RegistrationComponent {
           this.router.navigate(['/login']);
         },
         (error) => {
-          console.error('Registration failed:', error);
+          // console.error('Registration failed:', error);
           this.errorMessage = 'Registration failed. Please try again.';
         }
       );

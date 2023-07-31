@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChatUser, Message } from 'src/app/models/user.model';
+import { ChatUser, MessageHistory } from 'src/app/models/user.model';
 import { ChatService } from 'src/app/services/chat.service';
 @Component({
   selector: 'app-user-list',
@@ -7,13 +7,14 @@ import { ChatService } from 'src/app/services/chat.service';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent {
-  users: ChatUser[] = [];
-  selectedUserId: number | null = null;
-  selectedUserMessageHistory: Message[] = [];
+  userData: ChatUser[]=[];
+  selectedUserId: string | null = null;
+  selectedUserMessageHistory:any;
+  messageHistory: any ;
   // users: any[] = [
   //   {name: "priyanka", id:1, email:"priyanka@gmail.com"}
   // ];
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService) { }
 
   ngOnInit() {
     this.getUsers();
@@ -23,7 +24,9 @@ export class UserListComponent {
     this.chatService.getUsers()
       .subscribe(
         (users) => {
-          this.users = users;
+          this.userData=  Object.values(users)[0];
+          console.log("this.userData", this.userData);
+          
         },
         (error) => {
           console.error('Error fetching users:', error);
@@ -33,34 +36,24 @@ export class UserListComponent {
 
   onUserClick(user: any) {
     this.selectedUserId = user.id;
-    this.fetchMessageHistory(user.id);
-    console.log("user", user.id);
     this.chatService.SharedData.next(user);
-  }
-
-  fetchMessageHistory(user: any) {
-    console.log("+++++++++++", user);
-    
-    this.chatService.getUserMessages(user)
-      .subscribe(
-        (messages) => {
-          this.selectedUserMessageHistory = messages; // Store the message history in the new property
-        },
-        (error) => {
-          console.error('Error fetching message history:', error);
-        }
-      );
-  }
-
-  getMsg() {
-    // Check if a user is selected
     if (this.selectedUserId !== null) {
-      // Implement any logic you want to perform when a user is clicked
-      // For example, display the message history for the selected user
-      console.log('User clicked');
-      console.log('Selected user message history:', this.selectedUserMessageHistory);
-    } else {
-      console.log('No user selected.');
+      const request = {
+        userId: this.selectedUserId,
+        // before: '2023-07-27T15:03:15.504Z',
+        // count: '',
+        sort: 'ASC'
+      };
+      this.chatService.getMessageHistory(request)
+        .subscribe(
+          (res) => {            
+            console.log("this.messageHistory", res);
+          },
+          (error) => {
+            console.error('Error fetching message history:', error);
+          }
+        );
     }
+  
   }
 }

@@ -1,16 +1,11 @@
 <div>
     <div class="list-wrapper">
-         <!-- <ul>
-            <li *ngFor="let user of users" (click)="onUserClick(user.id)">{{ user.name }}</li>
-        </ul>  -->
-
         <ul>
-            <li *ngFor="let user of users" (click)="onUserClick(user)">
-              {{ user.name }}
+            <li *ngFor="let user of userData" (click)="onUserClick(user)">
+              {{ user.name }}<br>
+              <span>{{user.email}}</span>
             </li>
           </ul>
-
     </div>
-
     <!-- <app-conversation-history [selectedUserId]="selectedUserId"></app-conversation-history> -->
 </div>

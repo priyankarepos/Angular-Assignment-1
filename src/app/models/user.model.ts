@@ -10,16 +10,20 @@ export interface UserRegistor {
   }
 
   export interface ChatUser {
-    id: number;
+    id: string;
     name: string;
     email: string;
     // Add other properties as needed
   }
 
-  export interface Message {
-    id: number;
+  export interface SendMessageRequest {
+    receiverId: string;
     content: string;
-    sender: string;
-    timestamp: Date;
-    // Add other properties as needed
+  }
+
+  export interface MessageHistory {
+    userId: string;
+    before: string;
+    count: string;
+    sort: string;
   }
