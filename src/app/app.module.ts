@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,8 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { ConversationHistoryComponent } from './components/conversation-history/conversation-history.component';
 import { ChatService } from './services/chat.service';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +28,12 @@ import { ChatService } from './services/chat.service';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [AppService, ChatService],
   bootstrap: [AppComponent]

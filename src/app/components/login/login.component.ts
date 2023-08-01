@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
 
   constructor(
     private loginService: AppService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   onSubmit() {
@@ -34,11 +36,13 @@ export class LoginComponent {
           
           localStorage.setItem('token', user.token);
           localStorage.setItem('userId', user.profile.id);
+          this.toastr.success('logged in successfully');
           this.router.navigate(['/chat']);
         },
         (error) => {
           console.error('Login failed:', error);
           this.errorMessage = 'Invalid credentials. Please try again.';
+          this.toastr.error(error.message);
         }
       );
   }

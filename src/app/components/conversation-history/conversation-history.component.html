@@ -1,19 +1,28 @@
 <div class="history-wrapper" *ngIf="selectedUserId !== null">
-    <h3>Message History for User {{ selectedUserId }}</h3>
-    <ul>
-      <li *ngFor="let message of messageHistory">
-        {{ messageHistory }}
-      </li>
-    </ul>
-    <div class="send-msg-wrapper">
-      <input type="text" [(ngModel)]="messageContent" placeholder="Enter msg">
-      <!-- <textarea [(ngModel)]="messageContent" placeholder="Your message"></textarea> -->
-      <button (click)="sendMessage()">Send</button>
-  </div> 
-  </div>  
-  
-  
-  
-  
-  
-  
+  <h3>Message History for User {{ selectedUserId }}</h3>
+  <ul class="mss-style">
+    <li *ngFor="let message of receivedData; let i = index">
+      <div class="message-content" [ngClass]="{'sender': message.senderId === selectedUserId, 'receiver': message.senderId !== selectedUserId}" (contextmenu)="onRightClick($event, i)">
+        <div *ngIf="!message.isEditing" (click)="hideOptions()">
+          {{ message.content }}
+        </div>
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+        <div *ngIf="message.isEditing">
+          <input type="text" [(ngModel)]="message.editedContent" placeholder="Edit message">
+          <button (click)="saveEditedMessage(message)">Save</button>
+          <button (click)="cancelEdit(message)">Cancel</button>
+        </div>
+      </div>
+      <div class="options" *ngIf="showOptionsIndex === i && message.senderId !== selectedUserId">
+        <button (click)="editMessage(message)">Edit</button>
+        <button (click)="deleteMessage(message.id)">Delete</button>
+      </div>
+    </li>
+  </ul>
+  <div class="send-msg-wrapper">
+    <input type="text" [(ngModel)]="messageContent" placeholder="Enter msg">
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
