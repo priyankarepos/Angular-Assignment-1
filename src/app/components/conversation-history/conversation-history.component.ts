@@ -1,25 +1,23 @@
-import { Component } from '@angular/core';
-import { SendMessageRequest } from 'src/app/models/user.model';
+import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import { ToastrService } from 'ngx-toastr';
+import { Message } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-conversation-history',
   templateUrl: './conversation-history.component.html',
   styleUrls: ['./conversation-history.component.css']
 })
-export class ConversationHistoryComponent {
+export class ConversationHistoryComponent implements OnInit {
   selectedUserId: any | null;
-  receiverId: string = '';
   messageContent: string = '';
   receivedData: any = [];
   errorMessage = '';
   showOptionsIndex: number = -1;
-  isUpdateGroup: boolean = false;
   userInfo: any;
   ascendingOrder: boolean = true;
   messageLimit: number = 20;
-
+  editedMessageContent: string = ''; 
 
   constructor(
     private userService: ChatService,
@@ -28,7 +26,7 @@ export class ConversationHistoryComponent {
 
   ngOnInit() {
     this.userService.MsgHistoryData.subscribe((data) => {
-      this.receivedData = Object.values(data)[0];  
+      this.receivedData = Object.values(data)[0];
     });
 
     this.userService.UserName.subscribe((user) => {
@@ -38,20 +36,25 @@ export class ConversationHistoryComponent {
     this.userService.getSharedData().subscribe((data) => {
       this.selectedUserId = data.id;
     });
+
+    this.receivedData.map((message: Message) => {
+      message.isEditing = false;
+    });
   }
 
   sendMessage() {
-    const request: SendMessageRequest = {
+    const request = {
       receiverId: this.selectedUserId,
       content: this.messageContent
     };
+
     this.userService.sendMessage(request).subscribe(
       (response) => {
         this.messageContent = '';
         this.isFetchHistory();
-        this.toastr.success("message sent successfully");
       },
       (error) => {
+        console.error('Error sending message:', error);
         this.toastr.error(error);
       }
     );
@@ -59,26 +62,27 @@ export class ConversationHistoryComponent {
 
   onRightClick(event: MouseEvent, index: number) {
     event.preventDefault();
-    this.showOptionsIndex = index;  
+    this.showOptionsIndex = index;
   }
 
   hideOptions() {
     this.showOptionsIndex = -1;
   }
 
-  editMessage(message: any) {
+  editMessage(message: Message) {
+    this.editedMessageContent = message.content;
     message.isEditing = true;
-    message.originalContent = message.content;
-    message.editedContent = message.originalContent;
     this.hideOptions();
   }
 
-  saveEditedMessage(message: any) {
-    this.userService.updateMessage(message.id, message.editedContent).subscribe(
-      (response) => {  
+  saveEditedMessage(message: Message) {
+    message.content = this.editedMessageContent;    
+
+    this.userService.updateMessage(message.id, message.content).subscribe(
+      (response) => {
         message.isEditing = false;
-        message.content = message.editedContent;
-        this.toastr.success(response.message);
+        this.editedMessageContent = '';
+        this.toastr.success('Message updated successfully');
       },
       (error) => {
         this.errorMessage = 'Something went wrong';
@@ -87,9 +91,9 @@ export class ConversationHistoryComponent {
     );
   }
 
-  cancelEdit(message: any) {
+  cancelEdit(message: Message) {
     message.isEditing = false;
-    message.editedContent = message.originalContent;
+    this.editedMessageContent = '';
   }
 
   deleteMessage(messageId: string) {
@@ -101,6 +105,7 @@ export class ConversationHistoryComponent {
           this.isFetchHistory();
         },
         (error) => {
+          console.error('Error deleting message:', error);
           this.toastr.error(error);
         }
       );
@@ -110,22 +115,22 @@ export class ConversationHistoryComponent {
   }
 
   isFetchHistory() {
-    const request = {
-      userId: this.selectedUserId,
-      sort: this.ascendingOrder ? 'ASC' : 'DESC',
-      count: this.messageLimit
-    };
-  
-    this.userService.getMessageHistory(request).subscribe(
-      (res) => {
-        this.receivedData = Object.values(res)[0];
-      },
-      (error) => {
-        this.toastr.error(error);
+        const request = {
+          userId: this.selectedUserId,
+          sort: this.ascendingOrder ? 'ASC' : 'DESC',
+          count: this.messageLimit
+        };
+      
+        this.userService.getMessageHistory(request).subscribe(
+          (res) => {
+            this.receivedData = Object.values(res)[0];
+          },
+          (error) => {
+            this.toastr.error(error);
+          }
+        );
       }
-    );
-  }
-  toggleSortOrder() {
+    toggleSortOrder() {
     this.ascendingOrder = !this.ascendingOrder;
     this.isFetchHistory();
     

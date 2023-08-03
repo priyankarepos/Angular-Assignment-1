@@ -2,7 +2,7 @@
   <div class="history-header" *ngIf="userInfo">
     <div class="header-name">
       <img src="../../../assets/img-1.jpg" alt="placeholder" />
-    <h3>{{ userInfo }}</h3>
+      <h3>{{ userInfo }}</h3>
     </div>
   </div>
   <ul class="mss-style">
@@ -14,11 +14,11 @@
           {{ message.content }}
         </div>
         <div *ngIf="message.isEditing">
-          <input type="text" [(ngModel)]="message.editedContent" placeholder="Edit message">
+          <input type="text" [(ngModel)]="editedMessageContent" placeholder="Edit message">
           <button (click)="saveEditedMessage(message)">Save</button>
           <button (click)="cancelEdit(message)">Cancel</button>
         </div>
-        <p>{{message.createdAt | date: 'HH:mm'}}</p>
+        <p>{{ message.createdAt | date: 'HH:mm' }}</p>
       </div>
       <div class="options" *ngIf="showOptionsIndex === i && message.senderId !== selectedUserId">
         <button (click)="editMessage(message)">Edit</button>
@@ -28,11 +28,11 @@
   </ul>
   <div class="sorting">
     <button *ngIf="receivedData.length >= messageLimit" (click)="loadMoreMessages()">Load More</button>
-    <button *ngIf="receivedData.length >=2" (click)="toggleSortOrder()">Sort Messages</button>
+    <button *ngIf="receivedData.length >= 2" (click)="toggleSortOrder()">Sort Messages</button>
   </div>
-
-  <div class="send-msg-wrapper">
+   <div class="send-msg-wrapper">
     <input type="text" [(ngModel)]="messageContent" placeholder="Enter msg">
     <button (click)="sendMessage()">Send</button>
   </div>
-</div>
+  </div>
+

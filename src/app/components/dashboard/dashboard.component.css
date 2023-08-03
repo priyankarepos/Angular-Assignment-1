@@ -28,6 +28,8 @@ app-user-list.comp-1  {
     width: 23%;
     background: #d5c7ff;
     padding: 0 10px;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
 app-conversation-history.comp-2 {
@@ -35,4 +37,9 @@ app-conversation-history.comp-2 {
     background: #d9d9d9;
     height: 100vh;
     position: relative;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 0px;
 }

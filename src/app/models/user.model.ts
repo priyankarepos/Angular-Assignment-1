@@ -26,3 +26,12 @@ export interface MessageHistory {
   count: string;
   sort: string;
 }
+export interface Message {
+  id: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  senderId: string;
+  receiverId: string;
+  isEditing: boolean;
+}

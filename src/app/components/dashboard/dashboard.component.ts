@@ -14,6 +14,7 @@ export class DashboardComponent {
   onLogout() {
     localStorage.removeItem('userId');
     localStorage.removeItem('token');
+    localStorage.removeItem('receiverId');
     this.router.navigate(['/login']);
   }
 

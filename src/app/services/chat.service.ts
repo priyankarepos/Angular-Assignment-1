@@ -20,8 +20,6 @@ export class ChatService {
   }
 
   sendMessage(request: SendMessageRequest): Observable<any> {
-    console.log("request", request);
-
     let headers = new HttpHeaders().set("Authorization", `${localStorage.getItem('token')}`);
     return this.http.post<any>(`${this.apiUrl}/message`, request, { headers });
   }
