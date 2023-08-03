@@ -19,7 +19,7 @@ export class RegistrationComponent {
   errorMessage: string = '';
   registrationSuccess = false;
 
-  constructor(private registrationService: AppService, private router: Router, private toastr: ToastrService){ };
+  constructor(private registrationService: AppService, private router: Router, private toastr: ToastrService) { };
 
   onSubmit() {
     if (!this.user.name || !this.user.email || !this.user.password) {
@@ -30,14 +30,13 @@ export class RegistrationComponent {
     this.registrationService.registerUser(this.user)
       .subscribe(
         (response) => {
-          console.log('Registration successful:', response);
           this.toastr.success('registered successfully');
           this.router.navigate(['/login']);
         },
         (error) => {
           this.toastr.error("something went wrong");
           this.errorMessage = 'Registration failed. Please try again.';
-          
+
         }
       );
   }

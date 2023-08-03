@@ -24,7 +24,7 @@ import { CommonModule } from '@angular/common';
     DashboardComponent,
     UserListComponent,
     ChatComponent,
-    ConversationHistoryComponent
+    ConversationHistoryComponent,
   ],
   imports: [
     BrowserModule,

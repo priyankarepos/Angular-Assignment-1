@@ -22,7 +22,6 @@ header.header-wrapper {
     display: flex;
     justify-content: flex-start;
     background: #d9d9d9;
-    height: 100vh
 }
 
 app-user-list.comp-1  {
@@ -35,4 +34,5 @@ app-conversation-history.comp-2 {
     width: 80%;
     background: #d9d9d9;
     height: 100vh;
+    position: relative;
 }

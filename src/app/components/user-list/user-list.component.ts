@@ -10,17 +10,11 @@ import { ChatService } from 'src/app/services/chat.service';
 export class UserListComponent {
   userData: ChatUser[] = [];
   selectedUserId: string | null = null;
-  // messageHistory: any ;
-  // users: any[] = [
-  //   {name: "priyanka", id:1, email:"priyanka@gmail.com"}
-  // ];
-  constructor(private chatService: ChatService, private router:Router) { }
+  constructor(private chatService: ChatService, private router: Router) { }
 
   ngOnInit() {
     this.getUsers();
     this.onUserClick(this.userData[0].id);
-    console.log("messageHistory", this.userData);
-
   }
 
   getUsers() {
@@ -28,8 +22,6 @@ export class UserListComponent {
       .subscribe(
         (users) => {
           this.userData = Object.values(users)[0];
-          console.log("this.userData", this.userData[0].id);
-
         },
         (error) => {
           console.error('Error fetching users:', error);
@@ -39,21 +31,21 @@ export class UserListComponent {
 
   onUserClick(user: any) {
     this.selectedUserId = user.id;
+    localStorage.setItem('receiverId', user.id);
     this.chatService.SharedData.next(user);
     if (this.selectedUserId !== null) {
       const request = {
         userId: this.selectedUserId,
         // before: '2023-07-27T15:03:15.504Z',
-        // count: '',
+        count: '20',
         sort: 'ASC'
       };
       this.chatService.getMessageHistory(request)
         .subscribe(
           (res) => {
-            console.log("this.messageHistory", res, this.selectedUserId);
             this.chatService.MsgHistoryData.next(res);
             this.router.navigate([`chat/user/${this.selectedUserId}`])
-            console.log(this.selectedUserId)
+            this.chatService.UserName.next(user);
           },
           (error) => {
             console.error('Error fetching message history:', error);

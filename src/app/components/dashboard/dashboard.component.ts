@@ -9,7 +9,7 @@ import { ChatService } from 'src/app/services/chat.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  constructor(private loginService: AppService, private router: Router, private userService: ChatService) {}
+  constructor(private loginService: AppService, private router: Router, private userService: ChatService) { }
 
   onLogout() {
     localStorage.removeItem('userId');

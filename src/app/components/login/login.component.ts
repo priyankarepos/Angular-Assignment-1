@@ -21,7 +21,7 @@ export class LoginComponent {
     private loginService: AppService,
     private router: Router,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   onSubmit() {
     if (!this.user.email || !this.user.password) {
@@ -32,22 +32,19 @@ export class LoginComponent {
       .subscribe(
         (response) => {
           let user = response
-          console.log(response);
-          
           localStorage.setItem('token', user.token);
           localStorage.setItem('userId', user.profile.id);
           this.toastr.success('logged in successfully');
           this.router.navigate(['/chat']);
         },
         (error) => {
-          console.error('Login failed:', error);
           this.errorMessage = 'Invalid credentials. Please try again.';
           this.toastr.error(error.message);
         }
       );
   }
 
-  onRedirect(){
+  onRedirect() {
     this.router.navigateByUrl('/register');
   }
 
